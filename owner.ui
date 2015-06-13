@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>owner</class>
+ <widget class="QDialog" name="owner">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="btnGestionarUsuarios">
+   <property name="geometry">
+    <rect>
+     <x>325</x>
+     <y>180</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gestionar Usuarios</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGestionarNegos">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>180</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Consultar Negos</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGestionarOficina">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>180</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gestionar Oficina</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnGestionarOficina</sender>
+   <signal>clicked()</signal>
+   <receiver>owner</receiver>
+   <slot>openVentana31()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>163</x>
+     <y>337</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>164</x>
+     <y>437</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnGestionarUsuarios</sender>
+   <signal>clicked()</signal>
+   <receiver>owner</receiver>
+   <slot>openVentana32()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>447</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>445</x>
+     <y>425</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnGestionarNegos</sender>
+   <signal>clicked()</signal>
+   <receiver>owner</receiver>
+   <slot>openVentana33()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>707</x>
+     <y>307</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>706</x>
+     <y>427</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>openVentana31()</slot>
+  <slot>openVentana32()</slot>
+  <slot>openVentana33()</slot>
+ </slots>
+</ui>

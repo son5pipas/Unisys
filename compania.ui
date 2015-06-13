@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>compania</class>
+ <widget class="QDialog" name="compania">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>550</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>900</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>900</width>
+    <height>550</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="btnGestionarOwner">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>50</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gestionar Owner</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGestionarNegos">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>50</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gestionar Negos</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnGestionarUsuarios">
+   <property name="geometry">
+    <rect>
+     <x>325</x>
+     <y>50</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Gestionar Usuarios</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnLOG">
+   <property name="geometry">
+    <rect>
+     <x>175</x>
+     <y>280</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>LOG</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnVaciarBorrados">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>280</y>
+     <width>250</width>
+     <height>200</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Vaciar Borrados</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnGestionarOwner</sender>
+   <signal>clicked()</signal>
+   <receiver>compania</receiver>
+   <slot>openVentana21()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>172</x>
+     <y>273</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>459</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnGestionarUsuarios</sender>
+   <signal>clicked()</signal>
+   <receiver>compania</receiver>
+   <slot>openVentana22()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>408</x>
+     <y>295</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>408</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnGestionarNegos</sender>
+   <signal>clicked()</signal>
+   <receiver>compania</receiver>
+   <slot>openVentana23()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>722</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>723</x>
+     <y>443</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnLOG</sender>
+   <signal>clicked()</signal>
+   <receiver>compania</receiver>
+   <slot>openVentana24()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>218</x>
+     <y>418</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>131</x>
+     <y>405</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnVaciarBorrados</sender>
+   <signal>clicked()</signal>
+   <receiver>compania</receiver>
+   <slot>openVentana25()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>557</x>
+     <y>319</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>733</x>
+     <y>336</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>openVentana21()</slot>
+  <slot>openVentana22()</slot>
+  <slot>openVentana23()</slot>
+  <slot>openVentana24()</slot>
+  <slot>openVentana25()</slot>
+ </slots>
+</ui>
