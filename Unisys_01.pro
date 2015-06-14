@@ -30,9 +30,7 @@ SOURCES += main.cpp\
     maincontroller.cpp \
     cargadatos.cpp \
     c_peticion.cpp \
-    log.cpp \
-    c_fecha.cpp \
-    c_fechahora.cpp
+    historial.cpp
 
 CONFIG +=debug
 CONFIG += c++11
@@ -54,12 +52,10 @@ HEADERS  += mainwindow.h \
     maincontroller.h \
     cargadatos.h \
     c_peticion.h \
-    log.h \
     interfaz.h \
     lista.h \
-    c_fecha.h \
-    c_fechahora.h \
-    util.h
+    util.h \
+    historial.h
 
 FORMS    += mainwindow.ui \
     selectuserlogin.ui \
@@ -71,4 +67,4 @@ FORMS    += mainwindow.ui \
     gestionaroficina.ui \
     oficina.ui \
     consultarnegos.ui \
-    log.ui
+    historial.ui

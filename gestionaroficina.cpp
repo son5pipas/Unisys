@@ -1,7 +1,9 @@
-#include "gestionaroficina.h"
 #include "ui_gestionaroficina.h"
+
 #include <QMessageBox>
 #include <QDebug>
+
+#include "gestionaroficina.h"
 
 //ROI
 
@@ -14,6 +16,9 @@ gestionarOficina::gestionarOficina(QWidget *parent) :
 
 gestionarOficina::~gestionarOficina()
 {
+    owner v3;
+    v3.setController(*controller_);
+    v3.exec();
     delete ui;
 }
 

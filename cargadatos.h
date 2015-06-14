@@ -1,12 +1,11 @@
 #ifndef CARGADATOS_H
 #define CARGADATOS_H
 
-
+#include <lista.h>
+#include <c_user.h>
 #include <c_owner.h>
 #include <c_oficina.h>
 #include <c_nego.h>
-#include <c_user.h>
-#include <lista.h>
 #include <c_peticion.h>
 
 class CargaDatos

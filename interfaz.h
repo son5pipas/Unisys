@@ -12,14 +12,7 @@ public:
     virtual void setHeader (QTableWidget *tabla)=0;
     virtual bool compare(NodoUnisys *criterio)=0;
     virtual bool buscarID(int &ID)=0;
-    //virtual void setController(MainController &controller)=0;
 };
-
-
-
-
-
-
 
 #endif // INTERFAZ
 

@@ -2,8 +2,11 @@
 #define GESTIONARUSUARIO_H
 
 #include <QDialog>
-#include <maincontroller.h>
 #include <qmessagebox.h>
+
+#include "compania.h"
+#include "owner.h"
+#include "maincontroller.h"
 #include "util.h"
 
 

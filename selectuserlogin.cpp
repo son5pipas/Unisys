@@ -1,12 +1,13 @@
-#include "selectuserlogin.h"
 #include "ui_selectuserlogin.h"
+
 #include <QStandardItemModel>
 #include <QStandardItem>
 #include <qstring.h>
 #include <qmessagebox.h>
-
 #include <qstringlist.h>
 #include <QListWidgetItem>
+
+#include "selectuserlogin.h"
 
 //JL
 
@@ -33,7 +34,6 @@ void selectUserLogin::setController (MainController &controller){
 }
 
 void selectUserLogin::showUsers (){
-
     int iowner=ui->comboOwner->currentIndex();
     int owner= 0;
     if (buscarOwn.empty()!=true && iowner>0){
@@ -103,6 +103,7 @@ void selectUserLogin::aceptar(){
                 break;
             case 2:{
                 compania v2;
+                this->close();
                 v2.setController(*controller_);
                 v2.exec();
              }

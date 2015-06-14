@@ -81,6 +81,22 @@ void c_user::setContrasena(const std::string &contrasena)
     contrasena_ = contrasena;
 }
 
+
+c_user::c_user(){
+
+}
+
+c_user::c_user(int ID, int ID_owner, int ID_oficina, short role, std::string nombre, std::string usuario, std::string contrasena) :
+    ID_(ID), ID_owner_(ID_owner), ID_oficina_(ID_oficina), role_(role), nombre_(nombre),
+               usuario_(usuario), contrasena_(contrasena){ this->setBorrado(false);
+
+}
+
+c_user::~c_user()
+{
+
+}
+
 void c_user::rellenarFila(QTableWidget *tabla, int pos){
     tabla->setItem(pos,0,new QTableWidgetItem(QString::fromStdString(this->nombre())));
     tabla->setItem(pos,1,new QTableWidgetItem(QString::fromStdString(this->usuario())));
@@ -119,26 +135,3 @@ bool c_user::buscarID(int &ID){
     }
     return encontrado;
 }
-
-c_user::c_user(){
-
-}
-
-c_user::c_user(int ID, int ID_owner, int ID_oficina, short role, std::string nombre, std::string usuario, std::string contrasena) :
-    ID_(ID), ID_owner_(ID_owner), ID_oficina_(ID_oficina), role_(role), nombre_(nombre),
-               usuario_(usuario), contrasena_(contrasena){ this->setBorrado(false);
-
-}
-
-/*
-c:user::c_user(c_user &hola) : ID_(hola.ID), borrado_(false), ID_owner_(ID_owner), ID_oficina_(ID_oficina), role_(role), nombre_(nombre),
-    usuario_(usuario), contrasena_(contrasena){
-*/
-
-
-
-c_user::~c_user()
-{
-
-}
-

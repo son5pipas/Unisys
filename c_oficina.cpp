@@ -141,6 +141,26 @@ void c_oficina::setObservaciones(const std::string &observaciones)
     observaciones_ = observaciones;
 }
 
+
+c_oficina::c_oficina ()
+{
+
+}
+
+c_oficina::c_oficina(int ID, int ID_owner, std::string oficina, std::string razon, std::string NIF, std::string tlfn,
+                     std::string direccion, std::string CP, std::string poblacion, std::string provincia,
+                     std::string pais, std::string continente, std::string observaciones) :
+                     ID_(ID), ID_owner_(ID_owner), borrado_(false), oficina_(oficina), razon_(razon), NIF_(NIF), tlfn_(tlfn),
+                     direccion_(direccion), CP_(CP), poblacion_(poblacion), provincia_(provincia),
+                     pais_(pais), continente_(continente), observaciones_(observaciones) {
+
+}
+
+c_oficina::~c_oficina()
+{
+
+}
+
 void c_oficina::rellenarFila(QTableWidget *tabla, int pos){
     tabla->setItem(pos,0,new QTableWidgetItem(QString::fromStdString(this->oficina())));
     tabla->setItem(pos,1,new QTableWidgetItem(QString::fromStdString(this->tlfn())));
@@ -151,7 +171,7 @@ void c_oficina::rellenarFila(QTableWidget *tabla, int pos){
 
 void c_oficina::setHeader(QTableWidget *tabla){
     tabla->setColumnCount(5);
-    //tabla->hideColumn(4);
+    tabla->hideColumn(4);
     tabla->setHorizontalHeaderLabels(QString("Oficina;Teléfono;Dirección;Población").split(";"));
 }
 
@@ -171,20 +191,3 @@ bool c_oficina::buscarID(int &ID){
     }
     return encontrado;
 }
-
-c_oficina::c_oficina () { }
-
-c_oficina::c_oficina(int ID, int ID_owner, std::string oficina, std::string razon, std::string NIF, std::string tlfn,
-                     std::string direccion, std::string CP, std::string poblacion, std::string provincia,
-                     std::string pais, std::string continente, std::string observaciones) :
-                     ID_(ID), ID_owner_(ID_owner), borrado_(false), oficina_(oficina), razon_(razon), NIF_(NIF), tlfn_(tlfn),
-                     direccion_(direccion), CP_(CP), poblacion_(poblacion), provincia_(provincia),
-                     pais_(pais), continente_(continente), observaciones_(observaciones) {
-
-}
-
-c_oficina::~c_oficina()
-{
-
-}
-

@@ -121,6 +121,27 @@ void c_owner::setObservaciones(const std::string &observaciones)
     observaciones_ = observaciones;
 }
 
+
+c_owner::c_owner ()
+{
+
+}
+
+c_owner::c_owner (int ID, std::string owner, std::string razon, std::string NIF, std::string tlfn,
+                  std::string direccion, std::string CP, std::string poblacion, std::string provincia,
+                 std::string pais, std::string observaciones) :
+                 ID_(ID), borrado_(false), owner_(owner), razon_(razon), NIF_(NIF), tlfn_(tlfn),
+                 direccion_(direccion), CP_(CP), poblacion_(poblacion), provincia_(provincia),
+                 pais_(pais), observaciones_(observaciones)
+{
+
+}
+
+c_owner::~c_owner()
+{
+
+}
+
 void c_owner::rellenarFila(QTableWidget *tabla, int pos){
     tabla->setItem(pos,0,new QTableWidgetItem(QString::fromStdString(owner())));
     tabla->setItem(pos,1,new QTableWidgetItem(QString::fromStdString(tlfn())));
@@ -152,20 +173,3 @@ bool c_owner::buscarID(int &ID){
     }
     return encontrado;
 }
-
-c_owner::c_owner (){ }
-
-c_owner::c_owner (int ID, std::string owner, std::string razon, std::string NIF, std::string tlfn,
-                  std::string direccion, std::string CP, std::string poblacion, std::string provincia,
-                 std::string pais, std::string observaciones) :
-                 ID_(ID), borrado_(false), owner_(owner), razon_(razon), NIF_(NIF), tlfn_(tlfn),
-                 direccion_(direccion), CP_(CP), poblacion_(poblacion), provincia_(provincia),
-                 pais_(pais), observaciones_(observaciones){
-
-}
-
-c_owner::~c_owner()
-{
-
-}
-

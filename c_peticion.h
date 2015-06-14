@@ -6,19 +6,21 @@
 
 class c_peticion : public NodoUnisys{
 private:
+    int ID_;
+    int plazas_;
     std::string owner_;
-    std::string continente_;
-    std::string pais_;
     std::string oficina_;
+    std::string usuario_;
+    std::string pais_;
+    std::string continente_;
+    std::string origen_;
+    std::string destino_;
     std::string aceptada_;
     QDateTime peticion_;
-    int plazas_;
-    std::string nego_;
-    std::string usuario_;
-    int ID_;
 
 public:
     c_peticion();
+    c_peticion(int ID, int plazas, std::string owner, std::string oficina, std::string usuario, std::string pais, std::string continente, std::string origen, std::string destino, std::string aceptada, QDateTime peticion);
     ~c_peticion();
 
     QDateTime getPeticion() const;
@@ -33,8 +35,10 @@ public:
     void setOwner(const std::string &value);
     std::string getOficina() const;
     void setOficina(const std::string &value);
-    std::string nego() const;
-    void setNego(const std::string &nego);
+    std::string origen() const;
+    void setOrigen(const std::string &origen);
+    std::string destino() const;
+    void setDestino(const std::string &destino);
     std::string getUsuario() const;
     void setUsuario(const std::string &value);
     std::string aceptada() const;

@@ -2,8 +2,10 @@
 #define GESTIONAROFICINA_H
 
 #include <QDialog>
-#include <maincontroller.h>
-#include <lista.h>
+
+#include "owner.h"
+#include "maincontroller.h"
+#include "lista.h"
 #include "interfaz.h"
 #include "util.h"
 
@@ -25,8 +27,11 @@ private:
     Ui::gestionarOficina *ui;
 
     MainController *controller_;
+
     pel::List<int> buscarOficina;
+
     c_oficina criterio;
+
     int mostrados, opcion;
 
     void inicial();
@@ -40,7 +45,6 @@ private slots:
     void borrar();
     void aceptar();
     void cancelar();
-
 };
 
 #endif // GESTIONAROFICINA_H

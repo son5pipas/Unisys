@@ -1,5 +1,8 @@
-#include "compania.h"
 #include "ui_compania.h"
+
+#include <QDebug>
+
+#include "compania.h"
 
 //Guillermo
 
@@ -12,72 +15,62 @@ compania::compania(QWidget *parent) :
 
 compania::~compania()
 {
+    if(controller_->getSuperUser()==true){
+        selectUserLogin v1;
+        v1.setController(*controller_);
+        v1.exec();
+    }
     delete ui;
 }
 
 void compania::openVentana21(){
     gestionarOwner v21;
+    this->close();
     v21.setController(*controller_);
     v21.exec();
 }
 
 void compania::openVentana22(){
     gestionarUsuario v22;
+    this->close();
     v22.setController(*controller_);
     v22.exec();
 }
 
 void compania::openVentana23(){
     gestionarNegos v23;
+    this->close();
     v23.setController(*controller_);
     v23.exec();
 }
 
 void compania::openVentana24(){
-    Log v24;
+    historial v24;
+    this->close();
     v24.setController(*controller_);
     v24.exec();
 }
 
 void compania::openVentana25(){
-    auto iter1=controller_->getNegos().begin();
-    size_t count1=controller_->getNegos().count();
-    for (size_t i=0; i<=count1; i++){
-        if(controller_->getNegos().at(i).borrado()==true){
-            controller_->getNegos().erase(iter1);
-            count1=controller_->getNegos().count();
-        }
-        iter1++;
-    }
+    int owner=0, oficina=0, user=0 ,nego=0;
+    controller_->limpiarListas(&owner, &oficina, &user, &nego);
 
-    auto iter2=controller_->getOficinas().begin();
-    size_t count2=controller_->getOficinas().count();
-    for (size_t i=0; i<count2; i++){
-        if(controller_->getOficinas().at(i).borrado()==true){
-            controller_->getOficinas().erase(iter2);
-        }
-        iter2++;
-    }
-
-    auto iter3=controller_->getOwners().begin();
-    size_t count3=controller_->getOwners().count();
-    for (size_t i=0; i<count3; i++){
-        if(controller_->getOwners().at(i).borrado()==true){
-            controller_->getOwners().erase(iter3);
-        }
-        iter3++;
-    }
-
-    auto iter4=controller_->getUsers().begin();
-    size_t count4=controller_->getUsers().count();
-    for (size_t i=0; i<count4; i++){
-        if(controller_->getUsers().at(i).borrado()==true){
-            controller_->getUsers().erase(iter4);
-        }
-        iter4++;
-    }
+    QString informacion = QString("Han sido eliminados:\n- %1 owners\n- %2 oficinas\n- %3 usuarios\n- %4 negos").arg(owner).arg(oficina).arg(user).arg(nego);
+    QMessageBox::information(this, "",QString(informacion));
 }
 
 void compania::setController (MainController &controller){
     this->controller_=&controller;
+    this->comprobarNegos();
+}
+
+void compania::comprobarNegos(){
+    int disminuidos=0;
+    controller_->disminuirNegos(&disminuidos);
+    if (disminuidos!=0){
+        QString informacion = QString("Se han disminuido %1 negos hoy").arg(disminuidos);
+        QMessageBox::information(this, "", informacion);
+    }
+
+    controller_->borrarPasados();
 }

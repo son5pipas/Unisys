@@ -1,6 +1,8 @@
-#include "mainwindow.h"
 #include "ui_mainwindow.h"
+
 #include <qmessagebox.h>
+
+#include "mainwindow.h"
 
 //Alvaro
 
@@ -16,31 +18,6 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::openVentana1(){
-    selectUserLogin v1;
-    v1.setController(controller);
-    v1.exec();
-
-}
-
-void MainWindow::openVentana2(){
-    compania v2;
-    v2.setController(controller);
-    v2.exec();   
-}
-
-void MainWindow::openVentana3(){
-    owner v3;
-    v3.setController(controller);
-    v3.exec(); 
-}
-
-void MainWindow::openVentana4(){
-    oficina v4;
-    v4.setController(controller);
-    v4.exec();  
-}
-
 void MainWindow::login(){
     int role;
     role=controller.check_user(ui->txtUser->text().toStdString(), ui->txtPass->text().toStdString());
@@ -48,26 +25,34 @@ void MainWindow::login(){
     switch (role){
         case 1:{
             selectUserLogin v1;
+            controller.setSuperUser(true);
             v1.setController(controller);
-            v1.exec();            
+            v1.exec();
+            ui->btnClean->clicked();
         }
             break;
         case 2:{
             compania v2;
+            controller.setSuperUser(false);
             v2.setController(controller);
             v2.exec();
+            ui->btnClean->clicked();
         }
             break;
         case 3:{
             owner v3;
+            controller.setSuperUser(false);
             v3.setController(controller);
             v3.exec();
+            ui->btnClean->clicked();
         }
             break;
         case 4:{
             oficina v4;
+            controller.setSuperUser(false);
             v4.setController(controller);
             v4.exec();
+            ui->btnClean->clicked();
         }
             break;
         default:{

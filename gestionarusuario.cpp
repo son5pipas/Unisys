@@ -1,5 +1,6 @@
-#include "gestionarusuario.h"
 #include "ui_gestionarusuario.h"
+
+#include "gestionarusuario.h"
 
 //Alvaro
 
@@ -13,6 +14,15 @@ gestionarUsuario::gestionarUsuario(QWidget *parent) :
 
 gestionarUsuario::~gestionarUsuario()
 {
+    if (controller_->getUsers().at(controller_->getRegistrado()).role()==2){
+        compania v2;
+        v2.setController(*controller_);
+        v2.exec();
+    }else{
+        owner v3;
+        v3.setController(*controller_);
+        v3.exec();
+    }
     delete ui;
 }
 
@@ -75,54 +85,6 @@ void gestionarUsuario::inicialOwner(){
 
 void gestionarUsuario::showUsuarios(){
     rellenarTabla(controller_->getUsers(), ui->tableUser, &criterio);
-/*
-    int iowner=ui->comboOwner->currentIndex();
-    int owner=0;
-    if (role==2){
-        if (buscarOwn.empty()!=true && iowner>0){
-            owner=buscarOwn.at(iowner-1);
-        }
-    }else{
-        if (buscarOwn.empty()!=true && iowner>=0){
-            owner=buscarOwn.at(iowner);
-        }
-    }
-    int ioficina=ui->comboOficina->currentIndex();
-    int oficina = 0;
-    if(buscarOfi.empty()!=true && ioficina>0){
-        oficina=buscarOfi.at(ioficina-1);
-    };
-    buscarUser.clear();
-    ui->tableUser->clear();
-    ui->tableUser->setColumnCount(2);
-    ui->tableUser->setRowCount(0);
-    ui->tableUser->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
-    ui->tableUser->setHorizontalHeaderLabels(QString("Nombre;Usuario;ID").split(";"));
-    pel::List <c_user> userconsult= controller_->getUsers();
-    int j=0;
-    if (role==2){
-        for (size_t i=0; i<userconsult.count(); i++){
-            if (userconsult.at(i).ID_owner()==owner && userconsult.at(i).ID_oficina()==oficina && userconsult.at(i).role()==3 && userconsult.at(i).borrado()!=1){
-                j++;
-                ui->tableUser->setRowCount(j);
-                buscarUser.append(i);
-                ui->tableUser->setItem(j-1,0,new QTableWidgetItem(QString::fromStdString(userconsult.at(i).nombre())));
-                ui->tableUser->setItem(j-1,1,new QTableWidgetItem(QString::fromStdString(userconsult.at(i).usuario())));
-                mostrados=i;
-            }
-        }
-    }else if (role==3){
-        for (size_t i=0; i<userconsult.count(); i++){
-            if (userconsult.at(i).ID_owner()==owner && userconsult.at(i).ID_oficina()==oficina && userconsult.at(i).role()==4 && userconsult.at(i).borrado()!=1){
-                j++;
-                ui->tableUser->setRowCount(j);
-                buscarUser.append(i);
-                ui->tableUser->setItem(j-1,0,new QTableWidgetItem(QString::fromStdString(userconsult.at(i).nombre())));
-                ui->tableUser->setItem(j-1,1,new QTableWidgetItem(QString::fromStdString(userconsult.at(i).usuario())));
-                mostrados=i;
-            }
-        }
-    }*/
 }
 
 void gestionarUsuario::showOwner (){
@@ -205,7 +167,7 @@ void gestionarUsuario::selectOficina(){
     this->showUsuarios();
     this->limpiarLabel();
 }
-////////////////////
+
 void gestionarUsuario::showLabel(){
     QString ID = ui->tableUser->item(ui->tableUser->currentRow(), 2)->text();
     int seleccionado = ID.toInt();
@@ -285,15 +247,6 @@ void gestionarUsuario::borrar(){
 }
 
 void gestionarUsuario::aceptar(){
-//    int selOwn, selOfi, owner, oficina;
-//    if(role==2){
-//        selOwn=ui->comboOwner->currentIndex();
-//        owner=buscarOwn.at(selOwn-1);
-//    }else{
-//        selOfi=ui->comboOficina->currentIndex();
-//        oficina=buscarOfi.at(selOfi-1);
-//        owner=buscarOwn.at(0);
-//    }
     switch (opcion) {
     case 1:{
         if(ui->txtNombre->text().isEmpty() || ui->txtPass->text().isEmpty() || ui->txtUser->text().isEmpty()){
@@ -324,7 +277,6 @@ void gestionarUsuario::aceptar(){
         }
         break;
     }
-        /////////////////////
     case 2:{
         QString ID = ui->tableUser->item(ui->tableUser->currentRow(),2)->text();
         int seleccionado = ID.toInt();
@@ -357,7 +309,12 @@ void gestionarUsuario::aceptar(){
 }
 
 void gestionarUsuario::cancelar(){
-
+    if(role==3){
+        this->inicialOwner();
+    }else{
+        this->inicialCompania();
+    }
+    this->limpiarLabel();
 }
 
 void gestionarUsuario::limpiarLabel(){

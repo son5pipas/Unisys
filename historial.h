@@ -1,33 +1,32 @@
-#ifndef LOG_H
-#define LOG_H
+#ifndef HISTORIAL_H
+#define HISTORIAL_H
 
 #include <QDialog>
-#include <maincontroller.h>
+
+#include "compania.h"
+#include "maincontroller.h"
 #include "util.h"
 
 namespace Ui {
-class log;
+class historial;
 }
 
-class Log : public QDialog
+class historial : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit Log(QWidget *parent = 0);
-    ~Log();
+    explicit historial(QWidget *parent = 0);
+    ~historial();
 
-    void setController (MainController &controller);
-
-
+     void setController (MainController &controller);
 
 private:
-    Ui::log *ui;
+    Ui::historial *ui;
 
     MainController *controller_;
-    c_peticion criterio;
 
-//    pel::List<int> buscarOwner;
+    c_peticion criterio;
 
     void inicial();
     void showOwner();
@@ -40,7 +39,6 @@ private:
 private slots:
     void showPeticiones();
     void showLabel();
-
 };
 
-#endif // LOG_H
+#endif // HISTORIAL_H

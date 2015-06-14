@@ -2,8 +2,10 @@
 #define OFICINA_H
 
 #include <QDialog>
-#include <maincontroller.h>
-#include <lista.h>
+
+#include "selectuserlogin.h"
+#include "lista.h"
+#include "maincontroller.h"
 #include "util.h"
 
 namespace Ui {
@@ -19,14 +21,18 @@ public:
     ~oficina();
 
     void setController (MainController &);
+
 private:
     Ui::oficina *ui;
 
     MainController *controller_;
+
     QDate dateLocal_;
+
     pel::List<int> buscarNegos;
     pel::List<int> buscarOrigen;
     pel::List<int> buscarDestino;
+
     c_nego criterio;
 
     void inicial();

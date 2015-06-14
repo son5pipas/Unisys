@@ -1,6 +1,9 @@
-#include "gestionarowner.h"
 #include "ui_gestionarowner.h"
+
 #include <qmessagebox.h>
+#include <QDebug>
+
+#include "gestionarowner.h"
 
 //Guillermo
 
@@ -13,6 +16,9 @@ gestionarOwner::gestionarOwner(QWidget *parent) :
 
 gestionarOwner::~gestionarOwner()
 {
+    compania v2;
+    v2.setController(*controller_);
+    v2.exec();
     delete ui;
 }
 
@@ -48,26 +54,6 @@ void gestionarOwner::limpiarLabel(){
 
 void gestionarOwner::showOwner(){
     rellenarTabla(controller_->getOwners(), ui->tableOwner, &criterio);
-    /*
-    ui->tableOwner->clear();
-    ui->tableOwner->setColumnCount(4);
-    ui->tableOwner->setHorizontalHeaderLabels(QString("Owner;Teléfono;Dirección;Población").split(";"));
-    pel::List<c_owner> consultOwner=controller_->getOwners();
-    buscarOwner.clear();
-
-    int j=0;
-    for (size_t i=0; i<consultOwner.count(); i++){
-        if(controller_->getOwners().at(i).borrado()==false){
-            j++;
-            ui->tableOwner->setRowCount(j);
-            ui->tableOwner->setItem(j-1,0,new QTableWidgetItem(QString::fromStdString(consultOwner.at(i).owner())));
-            ui->tableOwner->setItem(j-1,1,new QTableWidgetItem(QString::fromStdString(consultOwner.at(i).tlfn())));
-            ui->tableOwner->setItem(j-1,2,new QTableWidgetItem(QString::fromStdString(consultOwner.at(i).direccion())));
-            ui->tableOwner->setItem(j-1,3,new QTableWidgetItem(QString::fromStdString(consultOwner.at(i).poblacion())));
-            buscarOwner.append(i);
-            mostrados=j;
-        }
-    }*/
 }
 
 void gestionarOwner::showLabel(){
@@ -88,7 +74,6 @@ void gestionarOwner::showLabel(){
 
     ui->btnModificar->setEnabled(true);
     ui->btnBorrar->setEnabled(true);
-
 }
 
 void gestionarOwner::nuevo(){

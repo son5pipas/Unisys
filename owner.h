@@ -2,10 +2,12 @@
 #define OWNER_H
 
 #include <QDialog>
-#include <consultarnegos.h>
-#include <gestionarusuario.h>
-#include <gestionaroficina.h>
-#include <maincontroller.h>
+
+#include "gestionaroficina.h"
+#include "gestionarusuario.h"
+#include "consultarnegos.h"
+#include "selectuserlogin.h"
+#include "maincontroller.h"
 
 namespace Ui {
 class owner;

@@ -1,6 +1,8 @@
-#include "oficina.h"
 #include "ui_oficina.h"
+
 #include <QMessageBox>
+
+#include "oficina.h"
 
 // Sergio
 
@@ -13,6 +15,11 @@ oficina::oficina(QWidget *parent) :
 
 oficina::~oficina()
 {
+    if(controller_->getSuperUser()==true){
+        selectUserLogin v1;
+        v1.setController(*controller_);
+        v1.exec();
+    }
     delete ui;
 }
 
@@ -34,7 +41,7 @@ void oficina::setController (MainController &controller){
     criterio.setOrigen(" ");
     criterio.setPlazas(0);
     criterio.setPorcentaje(0);
-    criterio.setDis_fecha(date);
+    criterio.setDis_fecha(0);
 
     this->showOrigen();
     this->showDestino();

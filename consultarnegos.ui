@@ -447,17 +447,14 @@
      </rect>
     </property>
    </widget>
-   <widget class="QDateEdit" name="dateDis">
+   <widget class="QSpinBox" name="dateDis">
     <property name="geometry">
      <rect>
-      <x>600</x>
-      <y>38</y>
-      <width>91</width>
-      <height>25</height>
+      <x>610</x>
+      <y>40</y>
+      <width>71</width>
+      <height>20</height>
      </rect>
-    </property>
-    <property name="calendarPopup">
-     <bool>true</bool>
     </property>
    </widget>
   </widget>

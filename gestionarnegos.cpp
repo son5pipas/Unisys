@@ -1,7 +1,10 @@
-#include "gestionarnegos.h"
 #include "ui_gestionarnegos.h"
+
 #include <string>
 #include <qmessagebox.h>
+#include <QDebug>
+
+#include "gestionarnegos.h"
 
 //JL
 
@@ -13,15 +16,19 @@ gestionarNegos::gestionarNegos(QWidget *parent) :
 }
 
 gestionarNegos::~gestionarNegos()
-{
+{                                       //El destructor de esta ventana ejecuta la de Compania
+    compania v2;
+    v2.setController(*controller_);
+    v2.exec();
     delete ui;
 }
 
 void gestionarNegos::setController (MainController &controller){
     controller_=&controller;
+
     this-> inicial();
 
-    QDate date;
+    QDate date;                         //Establece los valores iniciales de filtrado en el Nego criterio.
     date.setDate(1900,01,01);
     QTime time;
     time.setHMS(01,01,01);
@@ -35,7 +42,7 @@ void gestionarNegos::setController (MainController &controller){
     criterio.setOrigen(" ");
     criterio.setPlazas(-1);
     criterio.setPorcentaje(0);
-    criterio.setDis_fecha(date);
+    criterio.setDis_fecha(0);
 
     this->showOwner();
     this->showOrigen();
@@ -69,7 +76,7 @@ void gestionarNegos::inicial(){
 void gestionarNegos::limpiarLabel(){
     ui->txtOrigen->clear();
     ui->txtDestino->clear();
-    ui->dateDis->setDate(dateLocal_);
+    ui->dateDis->clear();
     ui->dateVuelo->setDate(dateLocal_);
     ui->plazas->setValue(0);
     ui->porcentaje->setValue(0);
@@ -100,14 +107,14 @@ void gestionarNegos::showOrigen(){
     for (size_t i=0; i<controller_->getNegos().count(); i++){
         if(controller_->getNegos().at(i).borrado()!=1 && controller_->getNegos().at(i).ID_owner()==owner){
             bool encontrado=false;
-            for (int j=0; j<ui->comboOrigenFilter->count(); j++){
+            for (int j=0; j<ui->comboOrigenFilter->count(); j++){           //Comprueba si el origen se ha mostrado ya para no mostrar el mismo origen varias veces.
                 std::string origen=controller_->getNegos().at(i).origen();
                 std::string comboOrigen=ui->comboOrigenFilter->itemText(j).toStdString();
                 if(origen==comboOrigen){
                     encontrado=true;
                 }
             }
-            if(encontrado==false){
+            if(encontrado==false){                                          //Si no se ha mostrado el orgien, se muestra.
                 ui->comboOrigenFilter->addItem(QString::fromStdString(controller_->getNegos().at(i).origen()));
                 buscarOrigen.append(i);
                 encontrado=true;
@@ -127,7 +134,7 @@ void gestionarNegos::showDestino(){
     ui->comboDestinoFilter->addItem(" ");
     for (size_t i=0; i<controller_->getNegos().count(); i++){
         if(controller_->getNegos().at(i).borrado()!=1 && controller_->getNegos().at(i).ID_owner()==owner){
-            bool encontrado=false;
+            bool encontrado=false;                                          //Comprueba si el destino se ha mostrado ya para no mostrar el mismo destino varias veces.
             for (int j=0; j<ui->comboDestinoFilter->count(); j++){
                 std::string destino=controller_->getNegos().at(i).destino();
                 std::string comboDestino=ui->comboDestinoFilter->itemText(j).toStdString();
@@ -135,7 +142,7 @@ void gestionarNegos::showDestino(){
                     encontrado=true;
                 }
             }
-            if(encontrado==false){
+            if(encontrado==false){                                          //Si no se ha mostrado el destino, se muestra.
                 ui->comboDestinoFilter->addItem(QString::fromStdString(controller_->getNegos().at(i).destino()));
                 buscarDestino.append(i);
                 encontrado=true;
@@ -236,7 +243,7 @@ void gestionarNegos::showLabel(){
     ui->dateVuelo->setDate(QDate(controller_->getNegos().at(seleccionado).fecha().date()));
     ui->timeVuelo->setTime(QTime(controller_->getNegos().at(seleccionado).fecha().time()));
     ui->plazas->setValue(controller_->getNegos().at(seleccionado).plazas());
-    ui->dateDis->setDate(QDate(controller_->getNegos().at(seleccionado).dis_fecha()));
+    ui->dateDis->setValue(controller_->getNegos().at(seleccionado).dis_fecha());
     ui->porcentaje->setValue(controller_->getNegos().at(seleccionado).porcentaje());
 
     ui->btnModificar->setEnabled(true);
@@ -295,7 +302,7 @@ void gestionarNegos::borrar(){
     if(QbtnBorrar == QMessageBox::Yes){
         c_nego copyNegos = controller_->getNegos().at(seleccionado);
         copyNegos.setBorrado(true);
-        controller_->getNegos().replace(seleccionado, copyNegos);
+        controller_->modificarNego(seleccionado, copyNegos);
         this->inicial();
         this->limpiarLabel();
     }else if(QbtnBorrar == QMessageBox::No){
@@ -307,7 +314,7 @@ void gestionarNegos::borrar(){
 void gestionarNegos::aceptar(){
     switch (opcion) {
     case 1:{
-        if(ui->txtOrigen->text().isEmpty() || ui->txtDestino->text().isEmpty() || ui->dateVuelo->date()<=dateLocal_ || ui->dateDis->date()>=ui->dateVuelo->date()){
+        if(ui->txtOrigen->text().isEmpty() || ui->txtDestino->text().isEmpty() || ui->dateVuelo->date()<=dateLocal_ || dateLocal_.toJulianDay()>=ui->dateVuelo->date().toJulianDay()-ui->dateDis->value()){
             QMessageBox::information(this, "", "Debe rellenar todos los campos");
         }else{
             c_nego nuevo;
@@ -323,7 +330,7 @@ void gestionarNegos::aceptar(){
             nuevo.setDestino(ui->txtDestino->text().toStdString());
             nuevo.setFecha(ui->dateVuelo->date(),ui->timeVuelo->time());
             nuevo.setDisminuido(false);
-            nuevo.setDis_fecha(ui->dateDis->date());
+            nuevo.setDis_fecha(ui->dateDis->value());
             nuevo.setPlazas(ui->plazas->value());
             nuevo.setPorcentaje(ui->porcentaje->value());
 
@@ -341,7 +348,7 @@ void gestionarNegos::aceptar(){
         encontrarID(controller_->getNegos(), &seleccionado);
         int fila=ui->tablaNegos->currentRow();
 
-        if(ui->txtOrigen->text().isEmpty() || ui->txtDestino->text().isEmpty() || ui->dateVuelo->date()<=dateLocal_ || ui->dateDis->date()>=ui->dateVuelo->date()){
+        if(ui->txtOrigen->text().isEmpty() || ui->txtDestino->text().isEmpty() || ui->dateVuelo->date()<=dateLocal_ || dateLocal_.toJulianDay()>=ui->dateVuelo->date().toJulianDay()-ui->dateDis->value()){
             QMessageBox::information(this, "", "Todos los campos deben estár rellenos");
         }else{
             c_nego modificado;
@@ -350,7 +357,7 @@ void gestionarNegos::aceptar(){
             modificado.setDestino(ui->txtDestino->text().toStdString());
             modificado.setFecha(ui->dateVuelo->date(),ui->timeVuelo->time());
             modificado.setDisminuido(false);
-            modificado.setDis_fecha(ui->dateDis->date());
+            modificado.setDis_fecha(ui->dateDis->value());
             modificado.setPlazas(ui->plazas->value());
             modificado.setPorcentaje(ui->porcentaje->value());
             controller_->modificarNego(seleccionado, modificado);

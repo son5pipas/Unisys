@@ -1,5 +1,6 @@
-#include "owner.h"
 #include "ui_owner.h"
+
+#include "owner.h"
 
 //Sergio
 
@@ -12,6 +13,11 @@ owner::owner(QWidget *parent) :
 
 owner::~owner()
 {
+    if(controller_->getSuperUser()==true){
+        selectUserLogin v1;
+        v1.setController(*controller_);
+        v1.exec();
+    }
     delete ui;
 }
 

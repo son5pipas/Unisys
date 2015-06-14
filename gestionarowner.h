@@ -2,7 +2,9 @@
 #define GESTIONAROWNER_H
 
 #include <QDialog>
-#include <maincontroller.h>
+
+#include "compania.h"
+#include "maincontroller.h"
 #include "util.h"
 
 namespace Ui {
@@ -23,13 +25,16 @@ private:
     Ui::gestionarOwner *ui;
 
     MainController *controller_;
+
     pel::List<int> buscarOwner;
+
     c_owner criterio;
 
-    void showOwner();
     int opcion;
     int mostrados;
+
     void inicial();
+    void showOwner();
     void limpiarLabel();
 
 private slots:

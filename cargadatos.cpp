@@ -15,8 +15,7 @@ pel::List<c_user> CargaDatos::leerUser(){
 
     c_user berto    (1,0,0,1,"Alberto HG","1","1");
 
-    c_user comp1    (2,0,0,2,"José Luis HF","cmp1","cmp1");
-    //comp1.setBorrado(1);
+    c_user comp1    (2,0,0,2,"José Luis HF","cmp1","cmp1"); //comp1.setBorrado(1);
     c_user comp2    (3,0,0,2,"Álvaro AV","cmp2","cmp2");
 
     c_user berto2   (4,1,0,3,"Sergio PL","ow11","ow11");
@@ -66,7 +65,7 @@ pel::List<c_owner> CargaDatos::leerOwners(){
     pel::List<c_owner> owners;
 
     c_owner elcorteingles (1,"El Corte Inglés","El Corte Inglés S.A.", "A-28017895", "902224411","C/ Hermosilla, 112", "28009", "Madrid", "Madrid", "España", "A");
-    c_owner halcon (2,"Halcón Viajes","Viajes Halcón S.A.U", "A-10005510", "912182128","Carretera Arenal a Llucmajor Km 21,5 Polígono Son Noguera", "07620", "Llucmajor", "Islas Baleares", "España", "B");
+    c_owner halcon        (2,"Halcón Viajes","Viajes Halcón S.A.U", "A-10005510", "912182128","Carretera Arenal a Llucmajor Km 21,5 Polígono Son Noguera", "07620", "Llucmajor", "Islas Baleares", "España", "B");
 
     owners.append(elcorteingles);
     owners.append(halcon);
@@ -77,13 +76,13 @@ pel::List<c_owner> CargaDatos::leerOwners(){
 pel::List<c_oficina> CargaDatos::leerOficinas(){
     pel::List<c_oficina> oficinas;
 
-    c_oficina elcorte1 (1, 1, "Suecia", "Viajes el Corte Inglés Suecia S.L.", "A-28136478", "913135590", "C/ Suecia, 35", "28022", "Madrid", "Madrid", "España", "Europa", "L-V: 09:30-14:00 y 16:30-20:00 / S:10:00-14:00");
-    c_oficina elcorte2 (2, 1, "Viajes Granada", "Agencia de Viajes Granadian S.L.", "A-40295826", "958536574", "Camino de Ronda, 75", "18004", "Granada", "Granada", "España", "Europa", "L-V: 09:30-14:30 y 16:30-20:00 / S:10:00-14:30");
-    c_oficina elcorte3 (3, 1, "Campo de las Naciones", "Viajes Madrileños S.L.", "A-57648305", "917416462", "Avda. de Los Andes, 50", "28042", "Madrid", "Madrid", "España", "Europa", "L-S: 10:00 - 22:00 / D: 11:00 - 21:00");
-    c_oficina halcon1 (4, 2, "Halcón Goya", "Viajes Goya S.L.", "A-20355906", "914359160", "C/ Goya, 23", "28009", "Madrid", "Madrid", "España", "Europa", "Mañanas: de 09:30 a 13:30 / Tardes: de 16:00 a 20:00");
-    c_oficina halcon2 (5, 2, "Halcón Viajes Valladolid", "Valladolid Viaja S.L.", "A-22022938", "983350600", "C/ San Lorenzo, 4", "47001", "Valladolid", "Valladolid", "España", "Europa", "Mañanas: de 09:30 a 13:30 / Tardes: de 16:00 a 20:00");
-    c_oficina halcon3 (6, 2, "Viajes la Rambla", "Viajes La Rambla S.L.", "A-29095843", "934852909", "Rambla del Poblenou, 70", "08005", "Barcelona", "Barcelona", "España", "Europa", "Mañanas: de 09:30 a 13:30 / Tardes: de 16:00 a 20:00");
-    //halcon1.setBorrado(1);
+    c_oficina elcorte1   (1, 1, "Suecia", "Viajes el Corte Inglés Suecia S.L.", "A-28136478", "913135590", "C/ Suecia, 35", "28022", "Madrid", "Madrid", "España", "Europa", "L-V: 09:30-14:00 y 16:30-20:00 / S:10:00-14:00");
+    c_oficina elcorte2   (2, 1, "Viajes Granada", "Agencia de Viajes Granadian S.L.", "A-40295826", "958536574", "Camino de Ronda, 75", "18004", "Granada", "Granada", "España", "Europa", "L-V: 09:30-14:30 y 16:30-20:00 / S:10:00-14:30");
+    c_oficina elcorte3   (3, 1, "Campo de las Naciones", "Viajes Madrileños S.L.", "A-57648305", "917416462", "Avda. de Los Andes, 50", "28042", "Madrid", "Madrid", "España", "Europa", "L-S: 10:00 - 22:00 / D: 11:00 - 21:00");
+    c_oficina halcon1    (4, 2, "Halcón Goya", "Viajes Goya S.L.", "A-20355906", "914359160", "C/ Goya, 23", "28009", "Madrid", "Madrid", "España", "Europa", "Mañanas: de 09:30 a 13:30 / Tardes: de 16:00 a 20:00"); //halcon1.setBorrado(1);
+    c_oficina halcon2    (5, 2, "Halcón Viajes Valladolid", "Valladolid Viaja S.L.", "A-22022938", "983350600", "C/ San Lorenzo, 4", "47001", "Valladolid", "Valladolid", "España", "Europa", "Mañanas: de 09:30 a 13:30 / Tardes: de 16:00 a 20:00");
+    c_oficina halcon3    (6, 2, "Viajes la Rambla", "Viajes La Rambla S.L.", "A-29095843", "934852909", "Rambla del Poblenou, 70", "08005", "Barcelona", "Barcelona", "España", "Europa", "Mañanas: de 09:30 a 13:30 / Tardes: de 16:00 a 20:00");
+
     oficinas.append(elcorte1);
     oficinas.append(elcorte2);
     oficinas.append(elcorte3);
@@ -96,52 +95,55 @@ pel::List<c_oficina> CargaDatos::leerOficinas(){
 
 pel::List<c_nego> CargaDatos::leerNegos(){
     pel::List<c_nego> negos;
-    c_nego a1 (1, 1, 0/*30*/, 20,    "Granada", "París",    QDateTime(QDate(2015,8,3), QTime(10,50)), QDate(2015,6,16));
-    c_nego a2 (2, 1, 40, 10,    "Madrid", "Londres",        QDateTime(QDate(2015,8,3), QTime(11,50)), QDate(2015,6,16));
-    c_nego a3 (3, 1, 50, 20,    "Barcelona", "Berlin",      QDateTime(QDate(2015,8,3), QTime(12,50)), QDate(2015,6,16));
-    c_nego a4 (4, 1, 30, 30,    "Valencia", "Copenhague",   QDateTime(QDate(2015,8,3), QTime(13,50)), QDate(2015,6,16));
-    c_nego a5 (5, 1, 0/*40*/, 20,    "Granada", "Roma",     QDateTime(QDate(2015,8,3), QTime(14,50)), QDate(2015,6,16));
-    c_nego a6 (6, 1, 50, 10,    "Madrid", "París",          QDateTime(QDate(2015,8,4), QTime(10,50)), QDate(2015,6,16));
-    c_nego a7 (7, 1, 30, 20,    "Barcelona", "Londres",     QDateTime(QDate(2015,8,4), QTime(11,50)), QDate(2015,6,16));
-    c_nego a8 (8, 1, 0/*40*/, 30,    "Valencia", "Berlin",  QDateTime(QDate(2015,8,4), QTime(12,50)), QDate(2015,6,16));
-    c_nego a9 (9, 1, 50, 20,    "Granada", "Copenhague",    QDateTime(QDate(2015,8,4), QTime(13,50)), QDate(2015,6,16));
-    c_nego a10 (10, 1, 30, 10,  "Madrid", "Roma",           QDateTime(QDate(2015,8,4), QTime(14,50)), QDate(2015,6,16));
-    c_nego a11 (11, 1, 40, 20,   "Barcelona", "París",      QDateTime(QDate(2015,8,5), QTime(10,50)), QDate(2015,6,16));
-    c_nego a12 (12, 1, 50, 30,  "Valencia", "Londres",      QDateTime(QDate(2015,8,5), QTime(11,50)), QDate(2015,6,16));
-    c_nego a13 (13, 1, 30, 20,  "Granada", "Berlin",        QDateTime(QDate(2015,8,5), QTime(12,50)), QDate(2015,6,16));
-    c_nego a14 (14, 1, 40, 10,  "Madrid", "Copenhague",     QDateTime(QDate(2015,8,5), QTime(13,50)), QDate(2015,6,16));
-    c_nego a15 (15, 1, 50, 20,  "Barcelona", "Roma",        QDateTime(QDate(2015,8,5), QTime(14,50)), QDate(2015,6,16));
-    c_nego a16 (16, 1, 30, 30,  "Valencia", "París",        QDateTime(QDate(2015,8,6), QTime(10,50)), QDate(2015,6,16));
-    c_nego a17 (17, 1, 40, 20,  "Granada", "Londres",       QDateTime(QDate(2015,8,6), QTime(11,50)), QDate(2015,6,16));
-    c_nego a18 (18, 1, 50, 10,   "Madrid", "Berlin",        QDateTime(QDate(2015,8,6), QTime(12,50)), QDate(2015,6,16));
-    c_nego a19 (19, 1, 30, 20,  "Barcelona", "Copenhague",  QDateTime(QDate(2015,8,6), QTime(13,50)), QDate(2015,6,16));
-    c_nego a20 (20, 1, 40, 30,   "Valencia", "Roma",        QDateTime(QDate(2015,8,6), QTime(14,50)), QDate(2015,6,16));
-    c_nego b1 (21, 2, 50, 20,   "Granada", "París",         QDateTime(QDate(2015,8,3), QTime(10,50)), QDate(2015,6,16));
-    c_nego b2 (22, 2, 30, 10,   "Madrid", "Londres",        QDateTime(QDate(2015,8,3), QTime(11,50)), QDate(2015,6,16));
-    c_nego b3 (23, 2, 40, 20,   "Barcelona", "Berlin",      QDateTime(QDate(2015,8,3), QTime(12,50)), QDate(2015,6,16));
-    c_nego b4 (24, 2, 50, 30,   "Valencia", "Copenhague",   QDateTime(QDate(2015,8,3), QTime(13,50)), QDate(2015,6,16));
-    c_nego b5 (25, 2, 30, 20,   "Granada", "Roma",          QDateTime(QDate(2015,8,3), QTime(14,50)), QDate(2015,6,16));
-    c_nego b6 (26, 2, 40, 10,   "Madrid", "París",          QDateTime(QDate(2015,8,4), QTime(10,50)), QDate(2015,6,16));
-    c_nego b7 (27, 2, 50, 20,   "Barcelona", "Londres",     QDateTime(QDate(2015,8,4), QTime(11,50)), QDate(2015,6,16));
-    c_nego b8 (28, 2, 30, 30,   "Valencia", "Berlin",       QDateTime(QDate(2015,8,4), QTime(12,50)), QDate(2015,6,16));
-    c_nego b9 (29, 2, 40, 20,   "Granada", "Copenhague",    QDateTime(QDate(2015,8,4), QTime(13,50)), QDate(2015,6,16));
-    c_nego b10 (30, 2, 50, 30,  "Madrid", "Roma",           QDateTime(QDate(2015,8,4), QTime(14,50)), QDate(2015,6,16));
-    c_nego b11 (31, 2, 30, 20,   "Barcelona", "París",      QDateTime(QDate(2015,8,5), QTime(10,50)), QDate(2015,6,16));
-    c_nego b12 (32, 2, 40, 10,   "Valencia", "Londres",     QDateTime(QDate(2015,8,5), QTime(11,50)), QDate(2015,6,16));
-    c_nego b13 (33, 2, 50, 20,   "Granada", "Berlin",       QDateTime(QDate(2015,8,5), QTime(12,50)), QDate(2015,6,16));
-    c_nego b14 (34, 2, 30, 30,   "Madrid", "Copenhague",    QDateTime(QDate(2015,8,5), QTime(13,50)), QDate(2015,6,16));
-    c_nego b15 (35, 2, 40, 20,   "Barcelona", "Roma",       QDateTime(QDate(2015,8,5), QTime(14,50)), QDate(2015,6,16));
-    c_nego b16 (36, 2, 50, 10,   "Valencia", "París",       QDateTime(QDate(2015,8,6), QTime(10,50)), QDate(2015,6,16));
-    c_nego b17 (37, 2, 30, 20,   "Granada", "Londres",      QDateTime(QDate(2015,8,6), QTime(11,50)), QDate(2015,6,16));
-    c_nego b18 (38, 2, 40, 30,   "Madrid", "Berlin",        QDateTime(QDate(2015,8,6), QTime(12,50)), QDate(2015,6,16));
-    c_nego b19 (39, 2, 50, 20,   "Barcelona", "Copenhague", QDateTime(QDate(2015,8,6), QTime(13,50)), QDate(2015,6,16));
-    c_nego b20 (40, 2, 30, 10,   "Valencia", "Roma",        QDateTime(QDate(2015,8,6), QTime(14,50)), QDate(2015,6,16));
-    c_nego p1 (41, 1, 30, 20,    "Prueba", "Con Prueba",    QDateTime(QDate(2015,8,3), QTime(10,50)), QDate(2015,6,16));
-    c_nego p2 (42, 1, 40, 10,    "Prueba", "Con Prueba",  QDateTime(QDate(2015,8,3), QTime(11,50)), QDate(2015,6,16));
-    c_nego p3 (43, 1, 50, 20,    "Prueba", "Con Prueba 2",  QDateTime(QDate(2015,8,3), QTime(12,50)), QDate(2015,6,16));
-    c_nego p4 (44, 1, 30, 30,    "Prueba 2", "2 Prueba",    QDateTime(QDate(2015,8,3), QTime(13,50)), QDate(2015,6,16));
-    c_nego p5 (45, 1, 40, 20,    "Prueba 2", "2 Prueba",  QDateTime(QDate(2015,8,3), QTime(14,50)), QDate(2015,6,16));
+    c_nego a1 (1, 1, 0/*30*/, 20,  "Granada", "París",         QDateTime(QDate(2015,8,3), QTime(10,50)), 25);
+    c_nego a2 (2, 1, 40, 10,       "Madrid", "Londres",        QDateTime(QDate(2015,8,3), QTime(11,50)), 25);
+    c_nego a3 (3, 1, 50, 20,       "Barcelona", "Berlin",      QDateTime(QDate(2015,8,3), QTime(12,50)), 25);
+    c_nego a4 (4, 1, 30, 30,       "Valencia", "Copenhague",   QDateTime(QDate(2015,8,3), QTime(13,50)), 25);
+    c_nego a5 (5, 1, 0/*40*/, 20,  "Granada", "Roma",          QDateTime(QDate(2015,8,3), QTime(14,50)), 25);
+    c_nego a6 (6, 1, 50, 10,       "Madrid", "París",          QDateTime(QDate(2015,8,4), QTime(10,50)), 25);
+    c_nego a7 (7, 1, 30, 20,       "Barcelona", "Londres",     QDateTime(QDate(2015,8,4), QTime(11,50)), 25);
+    c_nego a8 (8, 1, 0/*40*/, 30,  "Valencia", "Berlin",       QDateTime(QDate(2015,8,4), QTime(12,50)), 25);
+    c_nego a9 (9, 1, 50, 20,       "Granada", "Copenhague",    QDateTime(QDate(2015,8,4), QTime(13,50)), 25);
+    c_nego a10 (10, 1, 30, 10,     "Madrid", "Roma",           QDateTime(QDate(2015,8,4), QTime(14,50)), 25);
+    c_nego a11 (11, 1, 40, 20,     "Barcelona", "París",       QDateTime(QDate(2015,8,5), QTime(10,50)), 25);
+    c_nego a12 (12, 1, 50, 30,     "Valencia", "Londres",      QDateTime(QDate(2015,8,5), QTime(11,50)), 25);
+    c_nego a13 (13, 1, 30, 20,     "Granada", "Berlin",        QDateTime(QDate(2015,8,5), QTime(12,50)), 25);
+    c_nego a14 (14, 1, 40, 10,     "Madrid", "Copenhague",     QDateTime(QDate(2015,8,5), QTime(13,50)), 25);
+    c_nego a15 (15, 1, 50, 20,     "Barcelona", "Roma",        QDateTime(QDate(2015,8,5), QTime(14,50)), 25);
+    c_nego a16 (16, 1, 30, 30,     "Valencia", "París",        QDateTime(QDate(2015,8,6), QTime(10,50)), 25);
+    c_nego a17 (17, 1, 40, 20,     "Granada", "Londres",       QDateTime(QDate(2015,8,6), QTime(11,50)), 25);
+    c_nego a18 (18, 1, 50, 10,     "Madrid", "Berlin",         QDateTime(QDate(2015,8,6), QTime(12,50)), 25);
+    c_nego a19 (19, 1, 30, 20,     "Barcelona", "Copenhague",  QDateTime(QDate(2015,8,6), QTime(13,50)), 25);
+    c_nego a20 (20, 1, 40, 30,     "Valencia", "Roma",         QDateTime(QDate(2015,8,6), QTime(14,50)), 25);
+    c_nego b1 (21, 2, 50, 20,      "Granada", "París",         QDateTime(QDate(2015,8,3), QTime(10,50)), 25);
+    c_nego b2 (22, 2, 30, 10,      "Madrid", "Londres",        QDateTime(QDate(2015,8,3), QTime(11,50)), 25);
+    c_nego b3 (23, 2, 40, 20,      "Barcelona", "Berlin",      QDateTime(QDate(2015,8,3), QTime(12,50)), 25);
+    c_nego b4 (24, 2, 50, 30,      "Valencia", "Copenhague",   QDateTime(QDate(2015,8,3), QTime(13,50)), 25);
+    c_nego b5 (25, 2, 30, 20,      "Granada", "Roma",          QDateTime(QDate(2015,8,3), QTime(14,50)), 25);
+    c_nego b6 (26, 2, 40, 10,      "Madrid", "París",          QDateTime(QDate(2015,8,4), QTime(10,50)), 25);
+    c_nego b7 (27, 2, 50, 20,      "Barcelona", "Londres",     QDateTime(QDate(2015,8,4), QTime(11,50)), 25);
+    c_nego b8 (28, 2, 30, 30,      "Valencia", "Berlin",       QDateTime(QDate(2015,8,4), QTime(12,50)), 25);
+    c_nego b9 (29, 2, 40, 20,      "Granada", "Copenhague",    QDateTime(QDate(2015,8,4), QTime(13,50)), 25);
+    c_nego b10 (30, 2, 50, 30,     "Madrid", "Roma",           QDateTime(QDate(2015,8,4), QTime(14,50)), 25);
+    c_nego b11 (31, 2, 30, 20,     "Barcelona", "París",       QDateTime(QDate(2015,8,5), QTime(10,50)), 25);
+    c_nego b12 (32, 2, 40, 10,     "Valencia", "Londres",      QDateTime(QDate(2015,8,5), QTime(11,50)), 25);
+    c_nego b13 (33, 2, 50, 20,     "Granada", "Berlin",        QDateTime(QDate(2015,8,5), QTime(12,50)), 25);
+    c_nego b14 (34, 2, 30, 30,     "Madrid", "Copenhague",     QDateTime(QDate(2015,8,5), QTime(13,50)), 25);
+    c_nego b15 (35, 2, 40, 20,     "Barcelona", "Roma",        QDateTime(QDate(2015,8,5), QTime(14,50)), 25);
+    c_nego b16 (36, 2, 50, 10,     "Valencia", "París",        QDateTime(QDate(2015,8,6), QTime(10,50)), 25);
+    c_nego b17 (37, 2, 30, 20,     "Granada", "Londres",       QDateTime(QDate(2015,8,6), QTime(11,50)), 25);
+    c_nego b18 (38, 2, 40, 30,     "Madrid", "Berlin",         QDateTime(QDate(2015,8,6), QTime(12,50)), 25);
+    c_nego b19 (39, 2, 50, 20,     "Barcelona", "Copenhague",  QDateTime(QDate(2015,8,6), QTime(13,50)), 25);
+    c_nego b20 (40, 2, 30, 10,     "Valencia", "Roma",         QDateTime(QDate(2015,8,6), QTime(14,50)), 25);
+    c_nego p1 (41, 1, 30, 20,      "Prueba", "Con Prueba",     QDateTime(QDate(2015,8,3), QTime(10,50)), 25);
+    c_nego p2 (42, 1, 40, 10,      "Prueba", "Con Prueba",     QDateTime(QDate(2015,8,3), QTime(11,50)), 25);
+    c_nego p3 (43, 1, 50, 20,      "Prueba", "Con Prueba 2",   QDateTime(QDate(2015,8,3), QTime(12,50)), 25);
+    c_nego p4 (44, 1, 30, 30,      "Prueba 2", "2 Prueba",     QDateTime(QDate(2015,8,3), QTime(13,50)), 25);
+    c_nego p5 (45, 1, 40, 20,      "Prueba 2", "2 Prueba",     QDateTime(QDate(2015,8,3), QTime(14,50)), 25);
 
+    a1.setBorrado(true);
+    a20.setBorrado(true);
+    //p5.setBorrado(true);
     a2.setDisminuido(true);
     a4.setDisminuido(true);
     a6.setDisminuido(true);
@@ -199,121 +201,23 @@ pel::List<c_nego> CargaDatos::leerNegos(){
 pel::List<c_peticion> CargaDatos::leerPeticion(){
     pel::List<c_peticion> peticiones;
 
-    QDateTime a;
-    QDate b;
-    QTime c;
-    b.setDate(2015,06,15);
-    c.setHMS(14,18,00);
-    a.setDate(b);
-    a.setTime(c);
+    c_peticion nueva1 (1, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Granada", "Paris", "Aceptada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva2 (2, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Madrid", "Berlin", "Aceptada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva3 (3, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Sevilla", "Valencia", "Denegada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva4 (4, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Londres", "Barcelona", "Aceptada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva5 (5, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Malaga", "Paris", "Aceptada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva6 (6, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Roma", "Barcelona", "Aceptada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva7 (7, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Copenhage", "Berlin", "Denegada", QDateTime(QDate(2015,06,15), QTime(14,18)));
+    c_peticion nueva8 (8, 3, "Halcón Viajes", "Campo de las Naciones", "José Luis", "España", "Europa", "Berlin", "Madrid", "Denegada", QDateTime(QDate(2015,06,15), QTime(14,18)));
 
-    c_peticion nueva;
-    nueva.setAceptada("Aceptada");
-    nueva.setContinente("Europa");
-    nueva.setID(1);
-    nueva.setNego("Granada - Paris");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Aceptada");
-    nueva.setContinente("Europa");
-    nueva.setID(2);
-    nueva.setNego("Madrid - Berlin");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Denegada");
-    nueva.setContinente("Europa");
-    nueva.setID(3);
-    nueva.setNego("Sevilla - Valencia");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Aceptada");
-    nueva.setContinente("Europa");
-    nueva.setID(4);
-    nueva.setNego("Londres - Barcelona");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Aceptada");
-    nueva.setContinente("Europa");
-    nueva.setID(5);
-    nueva.setNego("Malaga - Paris");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Aceptada");
-    nueva.setContinente("Europa");
-    nueva.setID(6);
-    nueva.setNego("Roma - Barcelona");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Denegada");
-    nueva.setContinente("Europa");
-    nueva.setID(7);
-    nueva.setNego("Copenhage - Berlin");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
-
-    nueva.setAceptada("Aceptada");
-    nueva.setContinente("Europa");
-    nueva.setID(8);
-    nueva.setNego("Berlin - Madrid");
-    nueva.setOficina("Campo de las Naciones");
-    nueva.setOwner("Halcón Viajes");
-    nueva.setPais("España");
-    nueva.setPeticion(a);
-    nueva.setPlazas(3);
-    nueva.setUsuario("José Luis");
-
-    peticiones.pushBack(nueva);
+    peticiones.append(nueva1);
+    peticiones.append(nueva2);
+    peticiones.append(nueva3);
+    peticiones.append(nueva4);
+    peticiones.append(nueva5);
+    peticiones.append(nueva6);
+    peticiones.append(nueva7);
+    peticiones.append(nueva8);
 
     return peticiones;
 }
-
-
-

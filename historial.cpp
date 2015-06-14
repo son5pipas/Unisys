@@ -1,25 +1,30 @@
-#include "log.h"
-#include "ui_log.h"
+#include "ui_historial.h"
+
 #include <QDebug>
 
-Log::Log(QWidget *parent) :
+#include "historial.h"
+
+historial::historial(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::log)
+    ui(new Ui::historial)
 {
     ui->setupUi(this);
 }
 
-Log::~Log()
+historial::~historial()
 {
+    compania v2;
+    v2.setController(*controller_);
+    v2.exec();
     delete ui;
 }
 
-void Log::setController(MainController &controller){
+void historial::setController(MainController &controller){
     controller_=&controller;
     inicial();
 }
 
-void Log::inicial(){
+void historial::inicial(){
     QDateTime fecha;
     QDate date;
     date.setDate(1900,01,01);
@@ -29,7 +34,8 @@ void Log::inicial(){
     fecha.setTime(time);
 
     criterio.setContinente(" ");
-    criterio.setNego(" ");
+    criterio.setOrigen(" ");
+    criterio.setDestino(" ");
     criterio.setOficina(" ");
     criterio.setOwner(" ");
     criterio.setPais(" ");
@@ -49,7 +55,7 @@ void Log::inicial(){
     ui->labels->setEnabled(false);
 }
 
-void Log::showPeticiones(){
+void historial::showPeticiones(){
     this->limpiarLabel();
 
     std::string owner=ui->comboOwnerFilter->currentText().toStdString();
@@ -96,7 +102,7 @@ void Log::showPeticiones(){
     rellenarTabla(controller_->getPeticiones(), ui->tablePeticiones, &criterio);
 }
 
-void Log::showOwner(){
+void historial::showOwner(){
     ui->comboOwnerFilter->clear();
     ui->comboOwnerFilter->addItem(" ");
     for (size_t i=0; i<controller_->getPeticiones().count(); i++){
@@ -115,7 +121,7 @@ void Log::showOwner(){
     }
 }
 
-void Log::showOficina(){
+void historial::showOficina(){
     ui->comboOficinaFilter->clear();
     ui->comboOficinaFilter->addItem(" ");
     for (size_t i=0; i<controller_->getPeticiones().count(); i++){
@@ -134,7 +140,7 @@ void Log::showOficina(){
     }
 }
 
-void Log::showContinente(){
+void historial::showContinente(){
     ui->comboContinenteFilter->clear();
     ui->comboContinenteFilter->addItem(" ");
     for (size_t i=0; i<controller_->getPeticiones().count(); i++){
@@ -153,7 +159,7 @@ void Log::showContinente(){
     }
 }
 
-void Log::showPais(){
+void historial::showPais(){
     ui->comboPais->clear();
     ui->comboPais->addItem(" ");
     for (size_t i=0; i<controller_->getPeticiones().count(); i++){
@@ -172,22 +178,24 @@ void Log::showPais(){
     }
 }
 
-void Log::showEstados(){
+void historial::showEstados(){
     ui->comboEstado->clear();
     ui->comboEstado->addItem(" ");
     ui->comboEstado->addItem("Aceptada");
     ui->comboEstado->addItem("Denegada");
 }
 
-void Log::showLabel(){
+void historial::showLabel(){
     QString ID = ui->tablePeticiones->item(ui->tablePeticiones->currentRow(), 4)->text();
     int seleccionado = ID.toInt();
     encontrarID(controller_->getPeticiones(), &seleccionado);
 
+    QString nego = QString::fromStdString(controller_->getPeticiones().at(seleccionado).origen() + " - " + controller_->getPeticiones().at(seleccionado).destino());
+
     ui->txtUsuario->setText(QString::fromStdString(controller_->getPeticiones().at(seleccionado).getUsuario()));
     ui->txtPais->setText(QString::fromStdString(controller_->getPeticiones().at(seleccionado).getPais()));
     ui->txtOwner->setText(QString::fromStdString(controller_->getPeticiones().at(seleccionado).getOwner()));
-    ui->txtNego->setText(QString::fromStdString(controller_->getPeticiones().at(seleccionado).nego()));
+    ui->txtNego->setText(QString(nego));
     ui->txtContinente->setText(QString::fromStdString(controller_->getPeticiones().at(seleccionado).getContinente()));
     ui->date->setDate(QDate(controller_->getPeticiones().at(seleccionado).getPeticion().date()));
     ui->time->setTime(QTime(controller_->getPeticiones().at(seleccionado).getPeticion().time()));
@@ -207,7 +215,7 @@ void Log::showLabel(){
     }
 }
 
-void Log::limpiarLabel(){
+void historial::limpiarLabel(){
     ui->txtUsuario->clear();
     ui->txtPais->clear();
     ui->txtOwner->clear();

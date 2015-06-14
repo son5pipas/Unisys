@@ -61,14 +61,24 @@ void c_peticion::setOficina(const std::string &value)
     oficina_ = value;
 }
 
-std::string c_peticion::nego() const
+std::string c_peticion::origen() const
 {
-    return nego_;
+    return origen_;
 }
 
-void c_peticion::setNego(const std::string &nego)
+void c_peticion::setOrigen(const std::string &origen)
 {
-    nego_ = nego;
+    origen_ = origen;
+}
+
+std::string c_peticion::destino() const
+{
+    return destino_;
+}
+
+void c_peticion::setDestino(const std::string &destino)
+{
+    destino_ = destino;
 }
 
 std::string c_peticion::getUsuario() const
@@ -101,13 +111,33 @@ void c_peticion::setAceptada(const std::string &aceptada)
     aceptada_ = aceptada;
 }
 
+c_peticion::c_peticion()
+{
+    
+}
+
+c_peticion::c_peticion(int ID, int plazas, std::string owner, std::string oficina, std::string usuario, std::string pais,
+                       std::string continente, std::string origen, std::string destino, std::string aceptada, QDateTime peticion) : ID_(ID), plazas_(plazas),
+                       owner_(owner), oficina_(oficina), usuario_(usuario), pais_(pais), continente_(continente), origen_(origen), destino_(destino),
+                       aceptada_(aceptada), peticion_(peticion)
+{
+
+}
+
+c_peticion::~c_peticion()
+{
+    
+}
+
 void c_peticion::rellenarFila(QTableWidget *tabla, int pos){
     QDate fecha=peticion_.date();
     QTime hora=peticion_.time();
     QString date=fecha.toString("dd/MM/yyyy");
     QString time=hora.toString("hh:mm");
 
-    tabla->setItem(pos,0,new QTableWidgetItem(QString::fromStdString(nego_)));
+    QString nego = QString::fromStdString(origen_ + " - " + destino_);
+
+    tabla->setItem(pos,0,new QTableWidgetItem(QString(nego)));
     tabla->setItem(pos,1,new QTableWidgetItem(QString::number(plazas_)));
     tabla->setItem(pos,2,new QTableWidgetItem(QString(date)));
     tabla->setItem(pos,3,new QTableWidgetItem(QString(time)));
@@ -173,22 +203,3 @@ bool c_peticion::buscarID(int &ID){
     }
     return encontrado;
 }
-
-
-
-
-
-
-
-
-
-c_peticion::c_peticion()
-{
-    
-}
-
-c_peticion::~c_peticion()
-{
-    
-}
-

@@ -1,5 +1,6 @@
-#include "consultarnegos.h"
 #include "ui_consultarnegos.h"
+
+#include "consultarnegos.h"
 
 //JL
 
@@ -11,7 +12,10 @@ consultarNegos::consultarNegos(QWidget *parent) :
 }
 
 consultarNegos::~consultarNegos()
-{
+{                                       //El destructor de esta ventana ejecuta la de Owner
+    owner v3;
+    v3.setController(*controller_);
+    v3.exec();
     delete ui;
 }
 
@@ -19,7 +23,7 @@ void consultarNegos::setController (MainController &controller){
     controller_=&controller;
     this-> inicial();
 
-    QDate date;
+    QDate date;                         //Establece los valores iniciales de filtrado en el Nego criterio.
     date.setDate(1900,01,01);
     QTime time;
     time.setHMS(01,01,01);
@@ -33,7 +37,7 @@ void consultarNegos::setController (MainController &controller){
     criterio.setOrigen(" ");
     criterio.setPlazas(-1);
     criterio.setPorcentaje(0);
-    criterio.setDis_fecha(date);
+    criterio.setDis_fecha(0);
 
     this->showOrigen();
     this->showDestino();
@@ -61,14 +65,14 @@ void consultarNegos::showOrigen(){
     for (size_t i=0; i<controller_->getNegos().count(); i++){
         if(controller_->getNegos().at(i).borrado()!=1 && controller_->getNegos().at(i).ID_owner()==owner){
             bool encontrado=false;
-            for (int j=0; j<ui->comboOrigenFilter->count(); j++){ //?El origen está ya mostrado?
+            for (int j=0; j<ui->comboOrigenFilter->count(); j++){           //Comprueba si el origen se ha mostrado ya para no mostrar el mismo origen varias veces.
                 std::string origen=controller_->getNegos().at(i).origen();
                 std::string comboOrigen=ui->comboOrigenFilter->itemText(j).toStdString();
                 if(origen==comboOrigen){
                     encontrado=true;
                 }
             }
-            if(encontrado==false){ //Si no está mostrado el origen, muestralo.
+            if(encontrado==false){                                          //Si no se ha mostrado el orgien, se muestra.
                 ui->comboOrigenFilter->addItem(QString::fromStdString(controller_->getNegos().at(i).origen()));
                 buscarOrigen.append(i);
                 encontrado=true;
@@ -85,14 +89,14 @@ void consultarNegos::showDestino(){
     for (size_t i=0; i<controller_->getNegos().count(); i++){
         if(controller_->getNegos().at(i).borrado()!=1 && controller_->getNegos().at(i).ID_owner()==owner){
             bool encontrado=false;
-            for (int j=0; j<ui->comboDestinoFilter->count(); j++){
+            for (int j=0; j<ui->comboDestinoFilter->count(); j++){          //Comprueba si el destino se ha mostrado ya para no mostrar el mismo destino varias veces.
                 std::string destino=controller_->getNegos().at(i).destino();
                 std::string comboDestino=ui->comboDestinoFilter->itemText(j).toStdString();
                 if(destino==comboDestino){
                     encontrado=true;
                 }
             }
-            if(encontrado==false){
+            if(encontrado==false){                                          //Si no se ha mostrado el destino, se muestra.
                 ui->comboDestinoFilter->addItem(QString::fromStdString(controller_->getNegos().at(i).destino()));
                 buscarDestino.append(i);
                 encontrado=true;
@@ -111,10 +115,8 @@ void consultarNegos::showLabel(){
     ui->dateVuelo->setDate(QDate(controller_->getNegos().at(seleccionado).fecha().date()));
     ui->timeVuelo->setTime(QTime(controller_->getNegos().at(seleccionado).fecha().time()));
     ui->plazas->setValue(controller_->getNegos().at(seleccionado).plazas());
-    ui->dateDis->setDate(QDate(controller_->getNegos().at(seleccionado).dis_fecha()));
+    ui->dateDis->setValue(controller_->getNegos().at(seleccionado).dis_fecha());
     ui->porcentaje->setValue(controller_->getNegos().at(seleccionado).porcentaje());
-
-
 }
 
 void consultarNegos::showNegos(){

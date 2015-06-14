@@ -11,7 +11,6 @@
    v3.0 - May 26, 2015
 */
 
-
 #include <cstddef> // to be able to use std::size_t
 #include <initializer_list>
 #include <utility> // to be able to use std::swap

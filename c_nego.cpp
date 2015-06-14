@@ -83,7 +83,6 @@ void c_nego::setDestino(const std::string &destino)
 
 QDateTime c_nego::fecha() const
 {
-
     return fecha_;
 }
 
@@ -95,14 +94,31 @@ void c_nego::setFecha(const QDate &fecha, const QTime &time)
     fecha_ = nuevo;
 }
 
-QDate c_nego::dis_fecha() const
+int c_nego::dis_fecha() const
 {
     return dis_fecha_;
 }
 
-void c_nego::setDis_fecha(const QDate &dis_fecha)
+void c_nego::setDis_fecha(int dis_fecha)
 {
     dis_fecha_ = dis_fecha;
+}
+
+c_nego::c_nego()
+{
+
+}
+
+c_nego::c_nego(int ID, int ID_owner, int plazas, int porcentaje, std::string origen, std::string destino,
+               QDateTime fecha, int dis_fecha) :
+               ID_(ID), ID_owner_(ID_owner), plazas_(plazas), porcentaje_(porcentaje), borrado_(false), disminuido_(false),
+               origen_(origen), destino_(destino), fecha_(fecha), dis_fecha_(dis_fecha){
+
+}
+
+c_nego::~c_nego()
+{
+
 }
 
 void c_nego::rellenarFila(QTableWidget *tabla, int pos){
@@ -172,37 +188,9 @@ bool c_nego::compare(NodoUnisys *criterio){
         if (comparar->plazas()==0 && this->plazas()==0){
             mostrar=false;
         }
-
-
-        /*for(size_t i=0; i<controller_->getNegos().count(); i++){
-            bool anadir=true;
-            std::string origenNego, destinoNego;
-            origenNego=controller_->getNegos().at(i).origen();
-            destinoNego=controller_->getNegos().at(i).destino();
-            fechaNego=controller_->getNegos().at(i).fecha().date();
-
-            if (controller_->getNegos().at(i).borrado()==true){
-                anadir=false;
-            }
-            //controller_->getNegos().compare(owner);
-            if (owner!=controller_->getNegos().at(i).ID_owner()){
-                anadir=false;
-            }
-
-            if (origen!=" " && origen!=origenNego){
-                anadir=false;
-            }
-
-            if (destino!=" " && destino!=destinoNego){
-                anadir=false;
-            }
-
-            if (fechaActivada==true && fecha!=fechaNego){
-                anadir=false;
-            }*/
-        }else{
-            mostrar=false;
-        }
+    }else{
+        mostrar=false;
+    }
 
     return mostrar;
 }
@@ -214,18 +202,3 @@ bool c_nego::buscarID(int &ID){
     }
     return encontrado;
 }
-
-c_nego::c_nego(){ }
-
-c_nego::c_nego(int ID, int ID_owner, int plazas, int porcentaje, std::string origen, std::string destino,
-               QDateTime fecha, QDate dis_fecha) :
-               ID_(ID), ID_owner_(ID_owner), plazas_(plazas), porcentaje_(porcentaje), borrado_(false), disminuido_(false),
-               origen_(origen), destino_(destino), fecha_(fecha), dis_fecha_(dis_fecha){
-
-}
-
-c_nego::~c_nego()
-{
-
-}
-

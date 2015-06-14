@@ -2,11 +2,13 @@
 #define COMPANIA_H
 
 #include <QDialog>
-#include <gestionarowner.h>
-#include <gestionarusuario.h>
-#include <gestionarnegos.h>
-#include <log.h>
-#include <maincontroller.h>
+
+#include "selectuserlogin.h"
+#include "gestionarowner.h"
+#include "gestionarusuario.h"
+#include "gestionarnegos.h"
+#include "historial.h"
+
 
 namespace Ui {
 class compania;
@@ -26,6 +28,8 @@ private:
     Ui::compania *ui;
 
     MainController *controller_;
+
+    void comprobarNegos();
 
 private slots:
     void openVentana21();

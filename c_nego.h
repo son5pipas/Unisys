@@ -17,12 +17,12 @@ private:
     std::string origen_;
     std::string destino_;
     QDateTime fecha_;
-    QDate dis_fecha_;
+    int dis_fecha_;
 
 public:
     c_nego();
     c_nego(int ID, int ID_owner, int plazas, int porcentaje, std::string origen, std::string destino,
-           QDateTime fecha, QDate dis_fecha);
+           QDateTime fecha, int dis_fecha);
     ~c_nego();
 
     long ID() const;
@@ -43,8 +43,8 @@ public:
     void setDestino(const std::string &destino);
     QDateTime fecha() const;
     void setFecha(const QDate &fecha, const QTime &time);
-    QDate dis_fecha() const;
-    void setDis_fecha(const QDate &dis_fecha);
+    int dis_fecha() const;
+    void setDis_fecha(int dis_fecha);
 
     void rellenarFila(QTableWidget *tabla, int pos);
     void setHeader (QTableWidget *tabla);
